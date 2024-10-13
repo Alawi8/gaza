@@ -1,4 +1,5 @@
 <?php
+
 // دالة عرض صفحة التحرير
 function gaza_admin_page() {
     $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
@@ -10,8 +11,6 @@ function gaza_admin_page() {
 }
 
 // دالة معالجة النموذج وتحديث المحتوى
-
-// دالة معالجة النموذج وتحديث المحتوى
 function gaza_handle_form_submission() {
     if (isset($_POST['submit_page'])) {
         // الحصول على معرف الصفحة
@@ -20,12 +19,14 @@ function gaza_handle_form_submission() {
         // تنظيف عنوان الصفحة
         $page_title = sanitize_text_field($_POST['page_title']);
 
-        // إلغاء الفلترة للسماح بحفظ الكلاسات والعناصر HTML بدون قيود
-        $page_content = $_POST['page_content']; // بدون wp_kses أو أي فلترة أخرى
+        // استخدام المحتوى بدون فلترة للحفاظ على جميع عناصر HTML
+        $page_content = $_POST['page_content']; // بدون wp_kses أو أي فلترة
 
         // استبدال محتوى القالب (إذا كنت تستخدم قالباً معيناً)
         $template = get_option('gaza_template', '');
-        $page_content = str_replace('{{content}}', $page_content, $template);
+        if (!empty($template)) {
+            $page_content = str_replace('{{content}}', $page_content, $template);
+        }
 
         // تحديث الصفحة في قاعدة البيانات
         $updated_page = array(
@@ -47,7 +48,6 @@ function gaza_handle_form_submission() {
 }
 add_action('admin_init', 'gaza_handle_form_submission');
 
-
 // إضافة رابط "Edit with Gaza" في صفحة تحرير الصفحات
 function gaza_add_edit_link($actions, $post) {
     if ($post->post_type == 'page') {
@@ -56,3 +56,7 @@ function gaza_add_edit_link($actions, $post) {
     return $actions;
 }
 add_filter('page_row_actions', 'gaza_add_edit_link', 10, 2);
+
+
+
+

@@ -30,7 +30,7 @@ add_action('admin_enqueue_scripts', 'gaza_enqueue_admin_scripts');
 function gaza_add_admin_menu()
 {
     // إضافة القائمة الرئيسية
-    add_menu_page('Gaza', 'Gaza', 'manage_options', 'gaza', 'gaza_admin_page', 'dashicons-editor-code', 6);
+    add_menu_page(null , 'Gaza', 'manage_options', 'gaza', 'gaza_admin_page', 'dashicons-editor-code', 6);
     // إضافة القوائم الفرعية
     add_submenu_page('gaza', 'Modified Pages', 'Modified Pages', 'manage_options', 'gaza-modified-pages', 'gaza_modified_pages');
     add_submenu_page('gaza', 'Header Link Settings', 'Header Link', 'manage_options', 'gaza-header-link', 'gaza_header_link_page');
