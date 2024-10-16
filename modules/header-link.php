@@ -2,7 +2,6 @@
 // تسجيل صفحة الإعدادات
 
 function gaza_header_link_page() {
-    // حفظ الرابط الجديد
     if (isset($_POST['add_link']) && check_admin_referer('add_cdn_link_nonce')) {
         $new_link = esc_url_raw($_POST['new_link']);
         if (!empty($new_link)) {
@@ -12,7 +11,6 @@ function gaza_header_link_page() {
         }
     }
 
-    // حذف الرابط
     if (isset($_GET['delete_link']) && check_admin_referer('delete_cdn_link_nonce')) {
         $delete_index = intval($_GET['delete_link']);
         $header_links = get_option('gaza_header_links', array());
@@ -23,13 +21,11 @@ function gaza_header_link_page() {
         }
     }
 
-    // جلب الروابط المخزنة
     $header_links = get_option('gaza_header_links', array());
     ?>
     <div class="wrap">
         <h1>CDN Link Settings</h1>
 
-        <!-- نموذج إضافة رابط جديد -->
         <form method="post" action="">
             <?php wp_nonce_field('add_cdn_link_nonce'); // تأمين النموذج باستخدام nonce ?>
             <table class="form-table">
@@ -45,7 +41,6 @@ function gaza_header_link_page() {
 
         <hr>
 
-        <!-- عرض الروابط المخزنة -->
         <h2>Existing CDN Links</h2>
         <table class="wp-list-table widefat fixed striped">
             <thead>
@@ -75,7 +70,6 @@ function gaza_header_link_page() {
     <?php
 }
 
-// إضافة الروابط إلى الهيدر
 function gaza_add_cdn_links_to_header() {
     // جلب الروابط المخزنة
     $header_links = get_option('gaza_header_links', array());

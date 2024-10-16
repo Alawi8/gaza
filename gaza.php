@@ -3,7 +3,9 @@
 Plugin Name: Gaza
 Description: Simple page builder using HTML snippets.
 Version: 1.0
-Author: Your Name
+Author: ali alshalawi
+GitHub Plugin URI: https://github.com/YOUR_USERNAME/YOUR_REPOSITORY
+GitHub Branch: master
 */
 
 if (!defined('ABSPATH')) {

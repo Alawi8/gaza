@@ -59,6 +59,6 @@
             <button onclick="window.close();">Close Editor</button>
         </div>
     </div>
-    <?php wp_footer(); // استدعاء الجافا سكريبت الخاصة بووردبريس ?>
+    <?php wp_footer(); ?>
 </body>
 </html>
