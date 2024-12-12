@@ -1,14 +1,12 @@
 <?php
-// دالة لعرض الصفحات المعدلة بواسطة Gaza Editor
 function gaza_modified_pages() {
     global $wpdb;
 
-    // استعلام لجلب جميع الصفحات التي تم تعديلها بواسطة Gaza Editor
     $args = array(
         'post_type' => 'page',
-        'meta_key' => '_gaza_modified', // افتراض أن هناك ميتا مفتاح مخصص لتحديد الصفحات المعدلة
-        'meta_value' => '1',            // القيمة التي تحدد أنها معدلة بواسطة Gaza
-        'posts_per_page' => -1,         // جلب جميع الصفحات المعدلة
+        'meta_key' => '_gaza_modified', 
+        'meta_value' => '1',          
+        'posts_per_page' => -1,       
     );
 
     $modified_pages = get_posts($args);

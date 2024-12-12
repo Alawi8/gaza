@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Edit Page with Gaza Editor</title>
-    <?php wp_head(); // استدعاء الـ CSS والجافا سكريبت الخاصة بووردبريس ?>
+    <?php wp_head();?>
     <style>
         body {
             margin: 0;

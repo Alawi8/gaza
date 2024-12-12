@@ -1,6 +1,4 @@
 <?php
-// تسجيل صفحة الإعدادات
-
 function gaza_header_link_page() {
     if (isset($_POST['add_link']) && check_admin_referer('add_cdn_link_nonce')) {
         $new_link = esc_url_raw($_POST['new_link']);
@@ -16,7 +14,7 @@ function gaza_header_link_page() {
         $header_links = get_option('gaza_header_links', array());
         if (isset($header_links[$delete_index])) {
             unset($header_links[$delete_index]);
-            $header_links = array_values($header_links); // إعادة ترتيب المصفوفة
+            $header_links = array_values($header_links); 
             update_option('gaza_header_links', $header_links);
         }
     }
@@ -27,7 +25,7 @@ function gaza_header_link_page() {
         <h1>CDN Link Settings</h1>
 
         <form method="post" action="">
-            <?php wp_nonce_field('add_cdn_link_nonce'); // تأمين النموذج باستخدام nonce ?>
+            <?php wp_nonce_field('add_cdn_link_nonce');?>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Add New CDN Link</th>
@@ -71,12 +69,10 @@ function gaza_header_link_page() {
 }
 
 function gaza_add_cdn_links_to_header() {
-    // جلب الروابط المخزنة
     $header_links = get_option('gaza_header_links', array());
 
     if (!empty($header_links)) {
         foreach ($header_links as $link) {
-            // التحقق من نوع الرابط (CSS أو JS) وإضافته إلى الهيدر
             if (preg_match('/\.css$/', $link)) {
                 echo '<link rel="stylesheet" href="' . esc_url($link) . '" />' . "\n";
             } elseif (preg_match('/\.js$/', $link)) {

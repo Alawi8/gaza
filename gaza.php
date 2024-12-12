@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Gaza
+Plugin Name: trex builder
 Description: Simple page builder using HTML snippets.
 Version: 1.0
 Author: ali alshalawi
